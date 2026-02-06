@@ -2,7 +2,7 @@
   run: grep -i "width" style.css
   
   
-  name: Week 1 Autograder
+  name: Week 2 Autograder
 on: [push]
 
 jobs:
