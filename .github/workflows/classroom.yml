@@ -1,0 +1,37 @@
+name: Week 2 Autograder
+on: [push]
+
+jobs:
+  grade-assignment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 1. Check for Semantic Tags
+      - name: Check for <header>, <main>, and <footer>
+        run: |
+          grep -i "<header" index.html
+          grep -i "<main" index.html
+          grep -i "<footer" index.html
+
+      # 2. Check for Form Structure
+      - name: Check for <form> tag
+        run: grep -i "<form" index.html
+
+      # 3. Check for Required Email Input
+      # This searches for 'type="email"' and 'required' in the same file
+      - name: Check for Required Email Input
+        run: |
+          grep -i 'type="email"' index.html
+          grep -i "required" index.html
+
+      # 4. Check for Select Dropdown and Textarea
+      - name: Check for <select> and <textarea>
+        run: |
+          grep -i "<select" index.html
+          grep -i "<textarea" index.html
+
+      # 5. Check for Submit Button
+      - name: Check for Submit Button
+        run: grep -i 'type="submit"' index.html
